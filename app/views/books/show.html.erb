@@ -1,22 +1,14 @@
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<h1><%= @book.title %></h1>
+<h4><%= @book.author %></h2>
+  <%= image_tag(@book.logo, class: 'center-block img-responsive') %>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+<hr/>
+<h4>Description</h4>
+  <p>
+    <%= @book.description %>
+  </p>
 
-<p>
-  <strong>Logo:</strong>
-  <%= @book.logo %>
-</p>
+<%= render 'owner_section', book: @book %>
+<hr/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'Back', books_path, class: 'btn btn-default' %>

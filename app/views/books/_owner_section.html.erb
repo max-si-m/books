@@ -1,0 +1,6 @@
+<% if is_owner?(book.user) %>
+  <hr/>
+  <h4>Owner section</h4>
+    <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-info' %>
+    <%= state_link(book) %>
+<% end %>

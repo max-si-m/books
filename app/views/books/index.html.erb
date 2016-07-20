@@ -3,29 +3,28 @@
 <hr/>
 
 <div class='row'>
-  <% @books.each do |book| %>
+  <% @books.each_with_index do |book, index| %>
     <% next if book.draft? && !is_owner?(book.user) %>
     <div class='col col-lg-4'>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title"><%= book.title %></h3>
+          <h3 class="panel-title"><%= link_to book.title, book %></h3>
         </div>
         <div class="panel-body">
-          <%= image_tag(book.logo, class: 'center-block img-responsive') %>
-          <h3 class="center-block">
-            <%= book.author %>
-          </h3>
+          <%= link_to book do %>
+            <%= image_tag(book.logo, class: 'center-block img-responsive') %>
+          <% end %>
+          <h3 class="center-block"><%= book.author %></h3>
           <%= link_to 'Show', book, class: 'btn btn-primary' %>
           <div>
-            <hr/>
-            <h5>Owner section</h5>
-            <% if is_owner?(book.user) %>
-              <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-info' %>
-              <%= state_link(book) %>
-            <% end %>
+            <%= render 'owner_section', book: book %>
           </div>
         </div>
       </div>
     </div>
+    <!-- Fix for broken grids -->
+    <% if index % 2 %>
+      <div class="clearfix visible-xs-block"></div>
+    <% end %>
   <% end %>
 </div>
