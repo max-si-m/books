@@ -14,4 +14,13 @@ module BooksHelper
                           class: "btn btn-danger"
     end
   end
+
+  def books_active_class(key)
+    case key
+    when 'all'
+      params['my'] ? '' : 'active'
+    when 'my'
+      params['my'] ? 'active' : ''
+    end
+  end
 end

@@ -1,0 +1,4 @@
+<ul class="nav nav-pills">
+  <li class='<%= books_active_class('all') %>'><%= link_to 'All Books', root_path %></li>
+  <li class='<%= books_active_class('my') %>'><%= link_to 'My Books', root_path(my: true)%></li>
+</ul>
