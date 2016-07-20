@@ -25,6 +25,7 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :genres
 
   scope :recents, -> { where('created_at >= ?', 1.week.ago) }
+  default_scope -> { order(id: :desc) }
 
   private
 
