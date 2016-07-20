@@ -22,6 +22,7 @@
         <td><%= link_to 'Show', book %></td>
         <% if is_owner?(book.user) %>
           <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= state_link(book) %></td>
         <% end %>
       </tr>
     <% end %>
