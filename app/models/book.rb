@@ -24,6 +24,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :genres
 
+  scope :recents, -> { where('created_at >= ?', 1.week.ago) }
+
   private
 
   def slug_candidates
