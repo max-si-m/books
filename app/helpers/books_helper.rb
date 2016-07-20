@@ -4,9 +4,14 @@ module BooksHelper
   end
 
   def state_link(book)
-    title = book.draft? ? 'To publish' : 'To draft'
-    link_path = book.draft? ? publish_book_path(book) : draft_book_path(book)
-
-    link_to title, link_path, method: :post
+    if book.draft?
+      link_to 'To publish', publish_book_path(book),
+                            method: :post,
+                            class: "btn btn-success"
+    else
+      link_to 'To draft', draft_book_path(book),
+                          method: :post,
+                          class: "btn btn-danger"
+    end
   end
 end

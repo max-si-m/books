@@ -1,34 +1,31 @@
-<h1>Books</h1>
+<h1>Books <%= link_to 'New Book', new_book_path, class: 'btn btn-success' %> </h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Logo</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<hr/>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <% next if book.draft? && !is_owner?(book.user) %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= image_tag(book.logo) %></td>
-        <td><%= book.description %></td>
-        <td><%= link_to 'Show', book %></td>
-        <% if is_owner?(book.user) %>
-          <td><%= link_to 'Edit', edit_book_path(book) %></td>
-          <td><%= state_link(book) %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Book', new_book_path %>
+<div class='row'>
+  <% @books.each do |book| %>
+    <% next if book.draft? && !is_owner?(book.user) %>
+    <div class='col col-lg-4'>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= book.title %></h3>
+        </div>
+        <div class="panel-body">
+          <%= image_tag(book.logo, class: 'center-block') %>
+          <h3 class="center-block">
+            <%= book.author %>
+          </h3>
+          <%= link_to 'Show', book, class: 'btn btn-primary' %>
+          <div>
+            <hr/>
+            <h5>Owner section</h5>
+            <% if is_owner?(book.user) %>
+              <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-info' %>
+              <%= state_link(book) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
