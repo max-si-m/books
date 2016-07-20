@@ -3,6 +3,8 @@
   <%= image_tag(@book.logo, class: 'center-block img-responsive') %>
 
 <hr/>
+  <%= render 'genres', genres: @book.genres %>
+<hr/>
 <h4>Description</h4>
   <p>
     <%= @book.description %>

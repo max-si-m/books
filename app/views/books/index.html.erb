@@ -14,6 +14,9 @@
           <%= link_to book do %>
             <%= image_tag(book.logo, class: 'center-block img-responsive') %>
           <% end %>
+          <hr/>
+            <%= render 'genres', genres: book.genres %>
+          <hr/>
           <h3 class="center-block"><%= book.author %></h3>
           <%= link_to 'Show', book, class: 'btn btn-primary' %>
           <div>
