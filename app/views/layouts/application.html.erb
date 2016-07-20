@@ -9,9 +9,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'shared/navbar' %>
+    <section class='col col-lg-8'>
+      <%= render 'shared/flash_messagess' %>
 
-    <%= yield %>
+      <%= yield %>
+    </section>
   </body>
 </html>
