@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/norman/friendly_id.git
+  revision: 8531cdce5737df541bc2dbf9c0fa3ee4824b6fc8
+  specs:
+    friendly_id (5.2.0.beta.1)
+      activerecord (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,7 +45,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    arel (7.0.0)
+    arel (7.1.0)
     autoprefixer-rails (6.3.7)
       execjs
     bcrypt (3.1.11)
@@ -56,7 +63,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    devise (4.1.1)
+    devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -176,6 +183,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  friendly_id!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
