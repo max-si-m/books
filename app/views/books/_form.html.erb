@@ -31,6 +31,13 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= f.collection_select(:genre_ids,
+                            @genres, :id, :title,
+                            { selected: @book.genre_ids },
+                            { multiple: true }) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -7,6 +7,9 @@ class Book < ApplicationRecord
     message: 'can be only image URL in jpeg or png format'  }
 
   belongs_to :user
+  has_and_belongs_to_many :genres
+
+  private
 
   def slug_candidates
     [

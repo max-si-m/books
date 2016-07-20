@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_genres, only: [:new, :edit]
 
   # GET /books
   # GET /books.json
@@ -67,8 +68,13 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
     end
 
+    def set_genres
+      @genres = Genre.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :logo, :description)
+      params.require(:book).permit(:title, :author, :logo, :description,
+                                   genre_ids: [])
     end
 end
