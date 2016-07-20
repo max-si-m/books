@@ -13,14 +13,16 @@
 
   <tbody>
     <% @books.each do |book| %>
+      <% next if book.draft? && !is_owner?(book.user) %>
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= image_tag(book.logo) %></td>
         <td><%= book.description %></td>
         <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if is_owner?(book.user) %>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :set_genres, only: [:new, :edit]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -70,6 +71,10 @@ class BooksController < ApplicationController
 
     def set_genres
       @genres = Genre.all
+    end
+
+    def check_owner
+      redirect_to root_path, notice: 'Oops' unless @book.user == current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
