@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20160720072148) do
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
+  create_table "books_genres", id: false, force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_books_genres_on_book_id", using: :btree
+    t.index ["genre_id"], name: "index_books_genres_on_genre_id", using: :btree
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -45,13 +52,6 @@ ActiveRecord::Schema.define(version: 20160720072148) do
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "genres_books", id: false, force: :cascade do |t|
-    t.integer "genre_id"
-    t.integer "book_id"
-    t.index ["book_id"], name: "index_genres_books_on_book_id", using: :btree
-    t.index ["genre_id"], name: "index_genres_books_on_genre_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
