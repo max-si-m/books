@@ -9,3 +9,14 @@ User.create!(
   email: "user@user.user",
   password: "1111111111",
   password_confirmation: "1111111111")
+
+# Find genres here http://reference.yourdictionary.com/books-literature/different-types-of-books.html
+genres = ["Science fiction","Satire","Drama","Action and Adventure","Romance",
+          "Mystery","Horror","Self help","Health","Guide","Travel","Children's",
+          "Religion, Spirituality & New Age","Science","History","Math",
+          "Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art",
+          "Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy",
+          "Biographies","Autobiographies","Fantasy"]
+genres.each do |g|
+  Genre.create!(title: g)
+end
