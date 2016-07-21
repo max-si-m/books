@@ -1,24 +1,35 @@
-# README
+# Books
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Some funny app =)
 
-Things you may want to cover:
+# Deploy to Heroku
+You need to sign up in heroku.com
 
-* Ruby version
+Login in CLI
 
-* System dependencies
+```
+$ heroku login
+```
 
-* Configuration
+Create new app:
 
-* Database creation
+```
+$ heroku create
+```
 
-* Database initialization
+Push to heroku(via git):
 
-* How to run the test suite
+```
+$ git push heroku master
+```
+Run migrations:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ heroku run rails db:migrate
+```
+Install seeds:
+```
+$ heroku run rake db:seed
+```
 
-* Deployment instructions
-
-* ...
+Well done.
