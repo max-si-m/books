@@ -2,6 +2,13 @@
 
 Some funny app =)
 
+Default user:
+
+```
+email: user@user.user
+password: 1111111111
+```
+
 # Deploy to Heroku
 You need to sign up in heroku.com
 
