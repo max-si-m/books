@@ -1,6 +1,9 @@
-<% if is_owner?(book.user) %>
+<% if owner_actions?(book)   %>
   <hr/>
   <h4>Owner section</h4>
+  <div class="btn-group btn-group-justified">
     <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-info' %>
     <%= state_link(book) %>
+    <%= link_to 'Delete', book_path(book), data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger' %>
+  </div>
 <% end %>

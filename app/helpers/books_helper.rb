@@ -1,6 +1,6 @@
 module BooksHelper
-  def is_owner?(book_user)
-    book_user == current_user
+  def owner_actions?(book)
+    policy(book).edit? && policy(book).destroy?
   end
 
   def state_link(book)
@@ -11,7 +11,7 @@ module BooksHelper
     else
       link_to 'To draft', draft_book_path(book),
                           method: :post,
-                          class: "btn btn-danger"
+                          class: "btn btn-warning"
     end
   end
 

@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :publish, :draft]
-  before_action :set_genres, only: [:new, :edit]
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :set_genres, only: [:new, :edit, :create, :update]
 
   # GET /books
   # GET /books.json
@@ -12,6 +11,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    authorize @book
   end
 
   # GET /books/new
@@ -21,6 +21,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    authorize @book
   end
 
   # POST /books
@@ -42,6 +43,8 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    authorize @book
+
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
@@ -56,6 +59,8 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
+    authorize @book
+
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
@@ -64,13 +69,17 @@ class BooksController < ApplicationController
   end
 
   def publish
+    authorize @book
+
     @book.publishing!
-    redirect_to root_path, notice: 'Status is updated'
+    redirect_back 'Status is updated'
   end
 
   def draft
+    authorize @book
+
     @book.drafting!
-    redirect_to root_path, notice: 'Status is updated'
+    redirect_back 'Status is updated'
   end
 
   private
@@ -85,6 +94,10 @@ class BooksController < ApplicationController
 
     def check_owner
       redirect_to root_path, notice: 'Oops' unless @book.user == current_user
+    end
+
+    def redirect_back(notice)
+      redirect_to(request.referrer || root_path, notice: notice)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

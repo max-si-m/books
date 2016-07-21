@@ -5,27 +5,28 @@
 
 <div class='row'>
   <% @books.each_with_index do |book, index| %>
-    <% next if book.draft? && !is_owner?(book.user) %>
-    <div class='col col-lg-4'>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= link_to book.title, book %></h3>
-        </div>
-        <div class="panel-body">
-          <%= link_to book do %>
-            <%= image_tag(book.logo, class: 'center-block img-responsive') %>
-          <% end %>
-          <hr/>
-            <%= render 'genres', genres: book.genres %>
-          <hr/>
-          <h3 class="center-block"><%= book.author %></h3>
-          <%= link_to 'Show', book, class: 'btn btn-primary' %>
-          <div>
-            <%= render 'owner_section', book: book %>
+    <% if policy(book).show? %>
+      <div class='col col-lg-4'>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= link_to book.title, book %></h3>
+          </div>
+          <div class="panel-body">
+            <%= link_to book do %>
+              <%= image_tag(book.logo, class: 'center-block img-responsive') %>
+            <% end %>
+            <hr/>
+              <%= render 'genres', genres: book.genres %>
+            <hr/>
+            <h3 class="center-block"><%= book.author %></h3>
+            <%= link_to 'Show', book, class: 'btn btn-primary' %>
+            <div>
+              <%= render 'owner_section', book: book %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
     <!-- Fix for broken grids -->
     <% if index % 2 %>
       <div class="clearfix visible-xs-block"></div>

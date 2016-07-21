@@ -35,6 +35,7 @@ gem 'devise'
 # Problem with :finders in rails 5 is fixed but not released
 gem 'friendly_id', github: 'norman/friendly_id'
 gem 'aasm'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
