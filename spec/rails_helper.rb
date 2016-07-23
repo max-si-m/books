@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'factory_girl'
+require 'shoulda/matchers'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -65,3 +66,10 @@ Capybara::Webkit.configure do |config|
 end
 Capybara.javascript_driver = :webkit
 Capybara.default_wait_time = 15
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
