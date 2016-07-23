@@ -65,7 +65,7 @@ Capybara::Webkit.configure do |config|
     config.block_unknown_urls
 end
 Capybara.javascript_driver = :webkit
-Capybara.default_wait_time = 15
+Capybara.default_max_wait_time = 15
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
