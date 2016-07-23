@@ -12,9 +12,9 @@ class BookPolicy < ApplicationPolicy
   end
 
   def show?
-    return true if record.publish? || is_owner?
+    return true if record.publish?
 
-    record.draft? && !is_owner?
+    is_owner? || !record.draft?
   end
 
   def publish?
