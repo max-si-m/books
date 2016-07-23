@@ -59,6 +59,8 @@ RSpec.configure do |config|
   config.append_after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include RSpec::Rails::RequestExampleGroup, type: :feature
 end
 
 Capybara::Webkit.configure do |config|
@@ -73,3 +75,4 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
