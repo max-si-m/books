@@ -5,7 +5,11 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = params[:my] ? current_user.books.page(params[:page]) : Book.recents.page(params[:page])
+    @books = if params[:my]
+              current_user.books.page(params[:page])
+             else
+              Book.recents.page(params[:page])
+             end
   end
 
   # GET /books/1
