@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users
   devise_for :users
+
   resources :books do
     member do
       post 'draft'
@@ -9,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get 'dashboard/index'
+    root 'dashboard#index'
+
     resources :genres
     resources :books do
       member do
@@ -17,5 +21,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root 'books#index'
 end
