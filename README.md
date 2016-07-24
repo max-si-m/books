@@ -14,6 +14,13 @@ email: user@user.user
 password: 1111111111
 ```
 
+Default admin user:
+
+```
+email: admin@admin.admin
+password: 222222222
+```
+
 # Deploy to Heroku
 You need to sign up in heroku.com
 
