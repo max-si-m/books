@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :genres
     resources :books do
       member do
         post 'draft'

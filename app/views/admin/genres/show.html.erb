@@ -1,0 +1,12 @@
+<p>
+  <strong>Title:</strong>
+  <%= @genre.title %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @genre.slug %>
+</p>
+
+<%= link_to 'Edit', edit_admin_genre_path(@genre) %> |
+<%= link_to 'Back', admin_genres_path %>

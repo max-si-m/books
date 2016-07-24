@@ -1,0 +1,28 @@
+<%= form_for([:admin, genre], html: { class: 'form-horizontal' }) do |f| %>
+  <% if genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+
+      <ul>
+      <% genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="form-group">
+    <label for="genre_title" class="col-lg-2 control-label">Title</label>
+    <div class="col-lg-5">
+      <%= f.text_field :title, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <span class="col-lg-2 control-label"></span>
+    <div class="col-lg-2">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to 'Back', admin_genres_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
