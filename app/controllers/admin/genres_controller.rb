@@ -2,7 +2,7 @@ class Admin::GenresController < Admin::BaseController
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   def index
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page])
   end
 
   def show

@@ -3,7 +3,7 @@ class Admin::BooksController < Admin::BaseController
   before_action :set_genres, only: [:new, :edit, :create, :update]
 
   def index
-    @books = Book.all
+    @books = Book.all.page(params[:page])
   end
 
   def show
