@@ -1,0 +1,22 @@
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @book.logo %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @book.description %>
+</p>
+
+<%= link_to 'Edit', edit_admin_book_path(@book) %> |
+<%= link_to 'Back', admin_books_path %>

@@ -1,0 +1,33 @@
+<h1>Books dashboard</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Logo</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= image_tag(book.logo, size: "240x320") %></td>
+        <td><%= link_to 'Show', admin_book_path(book), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_admin_book_path(book), class: 'btn btn-info' %></td>
+        <td><%= admin_state_link(book) %></td>
+        <td><%= link_to 'Destroy', admin_book_path(book),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book', new_admin_book_path, class: 'btn btn-primary' %>

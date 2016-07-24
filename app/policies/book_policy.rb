@@ -29,6 +29,6 @@ class BookPolicy < ApplicationPolicy
   ##############################################################################
 
   def is_owner?
-    record.user == user
+    user.is_a?(AdminUser) || record.user == user
   end
 end

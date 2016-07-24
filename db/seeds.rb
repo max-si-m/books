@@ -10,6 +10,11 @@ User.create!(
   password: "1111111111",
   password_confirmation: "1111111111")
 
+AdminUser.create!(
+  email: "admin@admin.admin",
+  password: "222222222",
+  password_confirmation: "222222222")
+
 # Find genres here http://reference.yourdictionary.com/books-literature/different-types-of-books.html
 genres = ["Science fiction","Satire","Drama","Action and Adventure","Romance",
           "Mystery","Horror","Self help","Health","Guide","Travel","Children's",
