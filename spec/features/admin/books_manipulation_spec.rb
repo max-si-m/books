@@ -10,7 +10,7 @@ feature 'Admin books' do
     login(admin_user, scope: :admin_user)
   end
 
-  describe 'Authenticated user try to' do
+  describe 'admin user try to' do
     scenario 'create book' do
       click_on 'New Book'
 
