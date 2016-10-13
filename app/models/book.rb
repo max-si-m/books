@@ -18,8 +18,8 @@ class Book < ApplicationRecord
   end
 
   validates :title, :author, presence: true
-  validates :logo, format: { with: /\Ahttps?:\/\/.*\.(?:jpe?g|png)\z/,
-    message: 'can be only image URL in jpeg or png format'  }
+  validates :logo, format: { with: /\Ahttps?:\/\/.*\.(?:jpe?g|png|gif)\z/,
+    message: 'can be only image URL in jpeg, gif or png format'  }
 
   belongs_to :user
   has_and_belongs_to_many :genres
